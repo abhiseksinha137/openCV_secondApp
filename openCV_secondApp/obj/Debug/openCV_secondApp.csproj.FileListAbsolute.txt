@@ -24,3 +24,4 @@ E:\CSharp\openCV_secondApp\openCV_secondApp\bin\Debug\msvcp140_codecvt_ids.dll
 E:\CSharp\openCV_secondApp\openCV_secondApp\bin\Debug\vcruntime140.dll
 E:\CSharp\openCV_secondApp\openCV_secondApp\bin\Debug\vcruntime140_1.dll
 E:\CSharp\openCV_secondApp\openCV_secondApp\obj\Debug\openCV_secondApp.Form2.resources
+E:\CSharp\openCV_secondApp\openCV_secondApp\obj\Debug\openCV_secondApp.About.resources

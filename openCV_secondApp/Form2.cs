@@ -173,6 +173,7 @@ namespace openCV_secondApp
                     capture.Stop();
                     txtBxSavePath.Enabled = true;
                     pictureBox1.Image = new Mat().ToBitmap();
+                    lblStatus.Text = "Idle";
                 }
             }
         }
@@ -235,6 +236,12 @@ namespace openCV_secondApp
         {
             stopCapture();
             camNum = cmbBxCamNum.SelectedIndex;
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            About showAbout = new About();
+            showAbout.ShowDialog(); 
         }
     }
 }
