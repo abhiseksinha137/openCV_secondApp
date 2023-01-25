@@ -154,6 +154,10 @@ namespace openCV_secondApp
 
         public void saveImageFun(Bitmap img, string BasePath)
         {
+            if (flipVert)
+            {
+                img.RotateFlip(RotateFlipType.Rotate180FlipNone);
+            }
             string savePath = BasePath + "/";
             savePath = savePath + DateTime.Now.ToString("yyyy/MM/dd") + "/";
             if (!Directory.Exists(savePath))
