@@ -44,6 +44,8 @@
             this.cmbBxCamNum = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.chkBxFlipVertical = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
@@ -201,11 +203,32 @@
             this.linkLabel1.Text = "About";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(165, 27);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(59, 13);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Fip Vertical";
+            // 
+            // chkBxFlipVertical
+            // 
+            this.chkBxFlipVertical.AutoSize = true;
+            this.chkBxFlipVertical.Location = new System.Drawing.Point(230, 28);
+            this.chkBxFlipVertical.Name = "chkBxFlipVertical";
+            this.chkBxFlipVertical.Size = new System.Drawing.Size(15, 14);
+            this.chkBxFlipVertical.TabIndex = 16;
+            this.chkBxFlipVertical.UseVisualStyleBackColor = true;
+            this.chkBxFlipVertical.CheckedChanged += new System.EventHandler(this.chkBxFlipVertical_CheckedChanged);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(896, 547);
+            this.Controls.Add(this.chkBxFlipVertical);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cmbBxCamNum);
@@ -248,5 +271,7 @@
         private System.Windows.Forms.ComboBox cmbBxCamNum;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox chkBxFlipVertical;
     }
 }

@@ -35,6 +35,7 @@ namespace openCV_secondApp
         double motionThreshold = 35;
         bool saveImage;
         int camNum;
+        bool flipVert = false;
         public Form2()
         {
             InitializeComponent();
@@ -127,9 +128,16 @@ namespace openCV_secondApp
             //lblStatus.Text = contours.Length.ToString();
 
             prevImage = currentImage;
+
+            Bitmap SHOWIMG = showImage.ToBitmap();
             
-            pictureBox1.Image = showImage.ToBitmap();
+            if (flipVert)
+            {
+                SHOWIMG.RotateFlip(RotateFlipType.Rotate180FlipNone);
+            }
+            pictureBox1.Image = SHOWIMG;
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            
 
 
 
@@ -242,6 +250,11 @@ namespace openCV_secondApp
         {
             About showAbout = new About();
             showAbout.ShowDialog(); 
+        }
+
+        private void chkBxFlipVertical_CheckedChanged(object sender, EventArgs e)
+        {
+            flipVert = chkBxFlipVertical.Checked;
         }
     }
 }
