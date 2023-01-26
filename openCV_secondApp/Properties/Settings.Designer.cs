@@ -34,5 +34,17 @@ namespace openCV_secondApp.Properties {
                 this["savePath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int rotateVal {
+            get {
+                return ((int)(this["rotateVal"]));
+            }
+            set {
+                this["rotateVal"] = value;
+            }
+        }
     }
 }

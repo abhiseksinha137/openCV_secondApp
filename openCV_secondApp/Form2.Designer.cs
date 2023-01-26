@@ -32,7 +32,6 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.stop = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
@@ -44,10 +43,11 @@
             this.cmbBxCamNum = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.chkBxFlipVertical = new System.Windows.Forms.CheckBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.btnDebug = new System.Windows.Forms.Button();
+            this.btnRotate = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnStart
@@ -78,16 +78,6 @@
             this.label1.Size = new System.Drawing.Size(54, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Sensitivity";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 51);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(896, 496);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
             // 
             // label2
             // 
@@ -203,32 +193,44 @@
             this.linkLabel1.Text = "About";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // label5
+            // btnDebug
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(165, 27);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(59, 13);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "Fip Vertical";
+            this.btnDebug.Location = new System.Drawing.Point(784, 28);
+            this.btnDebug.Name = "btnDebug";
+            this.btnDebug.Size = new System.Drawing.Size(70, 23);
+            this.btnDebug.TabIndex = 17;
+            this.btnDebug.Text = "Debug";
+            this.btnDebug.UseVisualStyleBackColor = true;
+            this.btnDebug.Click += new System.EventHandler(this.btnDebug_Click);
             // 
-            // chkBxFlipVertical
+            // btnRotate
             // 
-            this.chkBxFlipVertical.AutoSize = true;
-            this.chkBxFlipVertical.Location = new System.Drawing.Point(230, 28);
-            this.chkBxFlipVertical.Name = "chkBxFlipVertical";
-            this.chkBxFlipVertical.Size = new System.Drawing.Size(15, 14);
-            this.chkBxFlipVertical.TabIndex = 16;
-            this.chkBxFlipVertical.UseVisualStyleBackColor = true;
-            this.chkBxFlipVertical.CheckedChanged += new System.EventHandler(this.chkBxFlipVertical_CheckedChanged);
+            this.btnRotate.BackgroundImage = global::openCV_secondApp.Properties.Resources.Rotate;
+            this.btnRotate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnRotate.Location = new System.Drawing.Point(168, 24);
+            this.btnRotate.Name = "btnRotate";
+            this.btnRotate.Size = new System.Drawing.Size(22, 21);
+            this.btnRotate.TabIndex = 18;
+            this.btnRotate.UseVisualStyleBackColor = true;
+            this.btnRotate.Click += new System.EventHandler(this.btnRotate_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 51);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(896, 496);
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(896, 547);
-            this.Controls.Add(this.chkBxFlipVertical);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.btnRotate);
+            this.Controls.Add(this.btnDebug);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cmbBxCamNum);
@@ -248,8 +250,8 @@
             this.Name = "Form2";
             this.Text = "MotionDetection";
             this.Load += new System.EventHandler(this.Form2_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,7 +273,7 @@
         private System.Windows.Forms.ComboBox cmbBxCamNum;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.CheckBox chkBxFlipVertical;
+        private System.Windows.Forms.Button btnDebug;
+        private System.Windows.Forms.Button btnRotate;
     }
 }

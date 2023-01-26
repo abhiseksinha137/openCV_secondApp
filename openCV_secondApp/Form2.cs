@@ -35,7 +35,7 @@ namespace openCV_secondApp
         double motionThreshold = 35;
         bool saveImage;
         int camNum;
-        bool flipVert = false;
+        int rotateVal = 0;
         public Form2()
         {
             InitializeComponent();
@@ -47,8 +47,8 @@ namespace openCV_secondApp
             saveImage = Convert.ToBoolean(chkBxSaveImage.CheckState);
             txtBxSavePath.Text = Properties.Settings.Default.savePath;
             cmbBxCamNum.SelectedIndex = 0;
-            
-            
+
+            rotateVal = Properties.Settings.Default.rotateVal;
         }
 
        
@@ -72,7 +72,8 @@ namespace openCV_secondApp
             //lblStatus.Text = "Idle"; lblStatus.ForeColor= System.Drawing.Color.Black;
             
 
-            currentImage = capture.QueryFrame();
+            currentImage=capture.QueryFrame();
+
             Mat showImage = (Mat)currentImage.Clone();
 
             Mat Frame = prevImage;
@@ -131,11 +132,8 @@ namespace openCV_secondApp
 
             Bitmap SHOWIMG = showImage.ToBitmap();
             
-            if (flipVert)
-            {
-                SHOWIMG.RotateFlip(RotateFlipType.Rotate180FlipNone);
-            }
-            pictureBox1.Image = SHOWIMG;
+
+            pictureBox1.Image = rotateImage(SHOWIMG);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             
 
@@ -148,23 +146,23 @@ namespace openCV_secondApp
             ThreadHelperClass.SetText(this, lblStatus, "Motion Detected!");
             if (saveImage && txtBxSavePath.Text!="")
             {
-                saveImageFun(currentImage.ToBitmap(), txtBxSavePath.Text);
+                saveImageFun(rotateImage(currentImage.ToBitmap()), txtBxSavePath.Text);
             }
         }
 
         public void saveImageFun(Bitmap img, string BasePath)
         {
-            if (flipVert)
-            {
-                img.RotateFlip(RotateFlipType.Rotate180FlipNone);
-            }
+            //if (flipVert)
+            //{
+            //    img.RotateFlip(RotateFlipType.Rotate180FlipNone);
+            //}
             string savePath = BasePath + "/";
             savePath = savePath + DateTime.Now.ToString("yyyy/MM/dd") + "/";
             if (!Directory.Exists(savePath))
             {
                 Directory.CreateDirectory(savePath);
             }
-            string saveName = savePath + DateTime.Now.ToString("hh-mm-ss")+".jpg";
+            string saveName = savePath + DateTime.Now.ToString("HH-mm-ss")+".jpg";
             img.Save(saveName, ImageFormat.Jpeg);
         }
 
@@ -258,7 +256,57 @@ namespace openCV_secondApp
 
         private void chkBxFlipVertical_CheckedChanged(object sender, EventArgs e)
         {
-            flipVert = chkBxFlipVertical.Checked;
+            
+        }
+
+        private void btnDebug_Click(object sender, EventArgs e)
+        {
+            deleteOldFolders();
+        }
+
+        void deleteOldFolders()
+        {
+            string basePath = txtBxSavePath.Text;
+            string[] folders = Directory.GetDirectories(basePath);
+            string str = "";
+            foreach (string folderPath in folders)
+            {
+                str = str+ folderPath + ", ";
+                //folderName = folderPath.Split("\\").Last(); 
+            }
+            //MessageBox.Show(str);
+        }
+
+        private void btnRotate_Click(object sender, EventArgs e)
+        {
+            if (rotateVal < 3)
+            {
+                rotateVal = rotateVal + 1;
+            }
+            else
+            {
+                rotateVal = 0;
+            }
+
+            Properties.Settings.Default.rotateVal = rotateVal;
+            Properties.Settings.Default.Save();
+        }
+
+        public Bitmap rotateImage(Bitmap image)
+        {
+
+            if (rotateVal == 0)
+            { }
+
+            if (rotateVal == 1)
+                image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            if (rotateVal == 2)
+                image.RotateFlip(RotateFlipType.Rotate180FlipNone);
+            if (rotateVal == 3)
+                image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+
+
+            return image;
         }
     }
 }
